@@ -14,7 +14,7 @@ export const Children = ({ children }) => {
         const newSocket = io('https://real-time-chat-app-server-eta.vercel.app', {
             withCredentials: true,
             extraHeaders: {
-                'Access-Control-Allow-Origin': 'https://real-time-chat-app-client-nine.vercel.app',
+                'Access-Control-Allow-Origin': 'https://real-time-chat-app-server-eta.vercel.app',
             },
         });
 
