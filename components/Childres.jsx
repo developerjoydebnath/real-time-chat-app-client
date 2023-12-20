@@ -13,6 +13,9 @@ export const Children = ({ children }) => {
     React.useEffect(() => {
         const newSocket = io('https://real-time-chat-app-server-eta.vercel.app', {
             withCredentials: true,
+            extraHeaders: {
+                'Access-Control-Allow-Origin': 'https://real-time-chat-app-client-nine.vercel.app',
+            },
         });
 
         newSocket.on('connect', () => {
