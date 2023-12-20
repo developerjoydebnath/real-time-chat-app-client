@@ -11,7 +11,7 @@ export const Children = ({ children }) => {
 
     // initialize socket connection
     React.useEffect(() => {
-        const newSocket = io('http://localhost:8000');
+        const newSocket = io('https://real-time-chat-app-server-eta.vercel.app');
 
         newSocket.on('connect', () => {
             // set the socket to the state
