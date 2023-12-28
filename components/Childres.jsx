@@ -3,6 +3,7 @@
 import { addSocket } from '@/redux/features/socket/socketSlice';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { io } from 'socket.io-client';
 
 export const Children = ({ children }) => {
     const { uid: userId } = useSelector((state) => state.auth);
