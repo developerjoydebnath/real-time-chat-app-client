@@ -11,12 +11,12 @@ export const Children = ({ children }) => {
 
     // initialize socket connection
     React.useEffect(() => {
-        const newSocket = io('https://real-time-chat-app-server-eta.vercel.app', {
+        const newSocket = io('http://localhost:8000', {
             withCredentials: true,
-            extraHeaders: {
-                'Access-Control-Allow-Origin': 'https://real-time-chat-app-server-eta.vercel.app',
-            },
         });
+        // const newSocket = io('https://real-time-chat-app-server-eta.vercel.app', {
+        //     withCredentials: true,
+        // });
 
         newSocket.on('connect', () => {
             // set the socket to the state

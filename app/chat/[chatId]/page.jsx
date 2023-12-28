@@ -13,6 +13,7 @@ export default function Conversation({ params }) {
     const auth = useSelector((state) => state.auth);
     const lastElRef = React.useRef(null);
     const [messageText, setMessageText] = React.useState('');
+    const [file, setFile] = React.useState(null);
     const searchParams = useSearchParams();
     const receiverId = searchParams.get('fid');
     const { socket } = useSelector((state) => state.socket);
@@ -20,6 +21,8 @@ export default function Conversation({ params }) {
     const { messages } = useGetMessages(chatId, newMessage);
     const dispatch = useDispatch();
     const { newMsg } = useSelector((state) => state.socket);
+
+    console.log(file);
 
     // update messages status to database and locally when user read the message
     React.useEffect(() => {
@@ -69,6 +72,20 @@ export default function Conversation({ params }) {
     // send message handler
     const sendMessageHandler = async (e) => {
         e.preventDefault();
+
+        if (file) {
+            const formData = new FormData();
+            formData.append('file', file);
+
+            try {
+                const { data } = await axiosInstance.post('/message/file-upload', formData);
+                console.log(data);
+            } catch (e) {
+                console.log(e);
+            }
+
+            console.log(formData);
+        }
 
         if (messageText.trim().length > 0) {
             // get the sending time
@@ -141,7 +158,32 @@ export default function Conversation({ params }) {
             {chatId && receiverId ? (
                 <div className="absolute w-full bottom-0 left-0">
                     <form className="flex items-center px-2 py-2" onSubmit={sendMessageHandler}>
+                        {/* attach file icon  */}
+                        <div className="p-1 cursor-pointer">
+                            <label htmlFor="file">
+                                <svg
+                                    className="h-7 w-7 cursor-pointer fill-slate-500"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    height="24"
+                                    viewBox="0 -960 960 960"
+                                    width="24"
+                                >
+                                    <path d="M460-80q-92 0-156-64t-64-156v-420q0-66 47-113t113-47q66 0 113 47t47 113v380q0 42-29 71t-71 29q-42 0-71-29t-29-71v-350q0-13 8.5-21.5T390-720q13 0 21.5 8.5T420-690v350q0 17 11.5 28.5T460-300q17 0 28.5-11.5T500-340v-380q0-42-29-71t-71-29q-42 0-71 29t-29 71v420q0 66 47 113t113 47q66 0 113-47t47-113v-390q0-13 8.5-21.5T650-720q13 0 21.5 8.5T680-690v390q0 92-64 156T460-80Z" />
+                                </svg>
+                            </label>
+                            <input
+                                name="file"
+                                className="hidden"
+                                onChange={(e) => setFile(e.target.files[0])}
+                                type="file"
+                                id="file"
+                                value=""
+                            />
+                        </div>
+
+                        {/* message input  */}
                         <input
+                            name="message"
                             type="text"
                             className="border px-5 py-2 outline-none w-full rounded-full"
                             placeholder="Message..."
@@ -149,6 +191,7 @@ export default function Conversation({ params }) {
                             onChange={(e) => setMessageText(e.target.value)}
                         />
 
+                        {/* send button icon */}
                         <div className="p-1 cursor-pointer">
                             <label htmlFor="submit">
                                 <svg
