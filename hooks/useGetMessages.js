@@ -8,7 +8,7 @@ export const useGetMessages = (chatId, newMsg, isModified) => {
         (async () => {
             try {
                 if (chatId) {
-                    const { data } = await axiosInstance.get(`/message/get/${chatId}`);
+                    const { data } = await axiosInstance.get(`/message/get/${chatId}?limit=50&page=0`);
                     setMessages(data.data);
                 }
             } catch (err) {

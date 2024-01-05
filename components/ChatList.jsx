@@ -28,8 +28,17 @@ export default function ChatList({ conversation }) {
                     </div>
                     <div>
                         <h4 className="text-base font-medium">{friendInfo.username}</h4>
-                        <p className="text-sm">
-                            {userId === lastMessageInfo?.senderId && 'You :'} {lastMessageInfo?.message}
+                        <p className="text-sm italic text-gray-600">
+                            {userId === lastMessageInfo?.senderId && 'You :'}{' '}
+                            {lastMessageInfo?.isDeleted
+                                ? 'Message deleted'
+                                : lastMessageInfo?.message
+                                ? lastMessageInfo.message.length > 10
+                                    ? `${lastMessageInfo.message.slice(0, 15)}...`
+                                    : lastMessageInfo.message
+                                : lastMessageInfo?.image
+                                ? 'Image'
+                                : ''}
                         </p>
                     </div>
                 </div>

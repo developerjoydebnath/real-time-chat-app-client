@@ -9,6 +9,6 @@ export default function ChatLists({ loggedInUserId }) {
     const users = getConversationList(loggedInUserId, chatId);
 
     return (
-        <div className="mx-3 mt-2">{users && users.map((user) => <ChatList conversation={user} key={user._id} />)}</div>
+        <div className="mx-3 mt-1">{users && users.map((user) => <ChatList conversation={user} key={user._id} />)}</div>
     );
 }

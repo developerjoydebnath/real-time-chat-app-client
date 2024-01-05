@@ -2,3 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+
+.cnx__messages_container{
+    height: calc(100vh - 135px);
+}
+
+.cnx__message_input{
+    position: fixed;
+    width: calc(100vw - 348px);
+}
