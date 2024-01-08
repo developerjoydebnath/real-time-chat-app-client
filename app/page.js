@@ -1,5 +1,6 @@
 'use client';
-import { userLoggedIn } from '@/redux/features/auth/authSlice';
+import Loading from '@/components/Loading';
+import { loading, userLoggedIn } from '@/redux/features/auth/authSlice';
 import { useRouter } from 'next/navigation';
 import React from 'react';
 import { useDispatch } from 'react-redux';
@@ -21,11 +22,8 @@ export default function Home() {
         if (data?.isLoggedIn) {
             dispatch(userLoggedIn(data));
         }
+        dispatch(loading(false));
     }, []);
 
-    return (
-        <main>
-            <div>Home</div>
-        </main>
-    );
+    return <Loading />;
 }

@@ -112,7 +112,7 @@ const MessageInput = ({ chatId, messages, auth, setNewMessage }) => {
                         <div className="p-1 cursor-pointer">
                             <label htmlFor="file">
                                 <svg
-                                    className="h-7 w-7 cursor-pointer fill-slate-500"
+                                    className="h-7 w-7 cursor-pointer fill-slate-500 hover:fill-green-500"
                                     xmlns="http://www.w3.org/2000/svg"
                                     height="24"
                                     viewBox="0 -960 960 960"
@@ -145,10 +145,10 @@ const MessageInput = ({ chatId, messages, auth, setNewMessage }) => {
                         />
 
                         {/* emoji input */}
-                        <div className="p-1 cursor-pointer">
+                        <div className="p-1 cursor-pointer ms-1">
                             <label htmlFor="emoji">
                                 <svg
-                                    className="h-7 w-7 cursor-pointer fill-slate-500"
+                                    className="h-7 w-7 cursor-pointer fill-slate-500 hover:fill-green-500"
                                     xmlns="http://www.w3.org/2000/svg"
                                     height="24"
                                     viewBox="0 -960 960 960"
@@ -169,10 +169,10 @@ const MessageInput = ({ chatId, messages, auth, setNewMessage }) => {
                         </div>
 
                         {/* send button icon */}
-                        <div className="p-1 cursor-pointer">
+                        <div className="p-1 cursor-pointer me-3">
                             <label htmlFor="submit">
                                 <svg
-                                    className="h-8 w-8 cursor-pointer fill-slate-500"
+                                    className="h-8 w-8 cursor-pointer fill-slate-500 hover:fill-green-500"
                                     xmlns="http://www.w3.org/2000/svg"
                                     height="24"
                                     viewBox="0 -960 960 960"

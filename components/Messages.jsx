@@ -41,11 +41,13 @@ const Messages = ({ messages, setMessages, auth, chatId }) => {
             ) : (
                 <div className="w-full h-full">
                     <div className="h-full">
-                        <div className="text-center">
-                            <button className="bg-green-200 px-3 py-0.5 rounded-sm mt-2" onClick={handleLoadMore}>
-                                Load more
-                            </button>
-                        </div>
+                        {messages.length >= 50 && (
+                            <div className="text-center">
+                                <button className="bg-green-200 px-3 py-0.5 rounded-sm mt-2" onClick={handleLoadMore}>
+                                    Load more
+                                </button>
+                            </div>
+                        )}
                         {messages?.map((msg) => (
                             // single message
                             <Message

@@ -87,115 +87,114 @@ export default function Signup() {
         }
     };
 
-    // render loading status if loading
-    if (auth?.loading) {
-        return <Loading />;
-    }
-
-    return (
-        <div className="w-full h-screen">
-            <div className="flex justify-center items-center h-full">
-                <div className="border rounded-lg shadow-lg">
-                    <form className="sm:m-10 m-6" onSubmit={handleSignup}>
-                        <div className="flex justify-center">
-                            <div className="p-2 rounded-full bg-slate-200">
-                                <svg
-                                    className="h-8 w-8 fill-gray-600"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    height="24"
-                                    viewBox="0 -960 960 960"
-                                    width="24"
-                                >
-                                    <path d="M240-80q-33 0-56.5-23.5T160-160v-400q0-33 23.5-56.5T240-640h40v-80q0-83 58.5-141.5T480-920q83 0 141.5 58.5T680-720v80h40q33 0 56.5 23.5T800-560v400q0 33-23.5 56.5T720-80H240Zm0-80h480v-400H240v400Zm240-120q33 0 56.5-23.5T560-360q0-33-23.5-56.5T480-440q-33 0-56.5 23.5T400-360q0 33 23.5 56.5T480-280ZM360-640h240v-80q0-50-35-85t-85-35q-50 0-85 35t-35 85v80ZM240-160v-400 400Z" />
-                                </svg>
+    if (!auth.uid && !auth?.isLoggedIn && !auth.loading) {
+        return (
+            <div className="w-full h-screen">
+                <div className="flex justify-center items-center h-full">
+                    <div className="border rounded-lg shadow-lg">
+                        <form className="sm:m-10 m-6" onSubmit={handleSignup}>
+                            <div className="flex justify-center">
+                                <div className="p-2 rounded-full bg-slate-200">
+                                    <svg
+                                        className="h-8 w-8 fill-gray-600"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        height="24"
+                                        viewBox="0 -960 960 960"
+                                        width="24"
+                                    >
+                                        <path d="M240-80q-33 0-56.5-23.5T160-160v-400q0-33 23.5-56.5T240-640h40v-80q0-83 58.5-141.5T480-920q83 0 141.5 58.5T680-720v80h40q33 0 56.5 23.5T800-560v400q0 33-23.5 56.5T720-80H240Zm0-80h480v-400H240v400Zm240-120q33 0 56.5-23.5T560-360q0-33-23.5-56.5T480-440q-33 0-56.5 23.5T400-360q0 33 23.5 56.5T480-280ZM360-640h240v-80q0-50-35-85t-85-35q-50 0-85 35t-35 85v80ZM240-160v-400 400Z" />
+                                    </svg>
+                                </div>
                             </div>
-                        </div>
-                        <h4 className="sm:text-2xl text-xl font-bold text-center text-slate-600">Signup</h4>
+                            <h4 className="sm:text-2xl text-xl font-bold text-center text-slate-600">Signup</h4>
 
-                        {/* email address  */}
-                        <div className="my-3">
-                            <label htmlFor="email" className="text-sm text-slate-500">
-                                Email
-                            </label>
-                            <br />
-                            <input
-                                required
-                                className="border outline-none sm:w-80 w-60 sm:h-10 h-8 rounded px-2"
-                                placeholder=""
-                                type="email"
-                                name="email"
-                                id="email"
-                                onChange={(e) => {
-                                    setEmail(e.target.value);
-                                }}
-                                value={email}
-                            />
-                        </div>
-
-                        {/* username  */}
-                        <div className="my-3">
-                            <label htmlFor="username" className="text-sm text-slate-500">
-                                Username
-                            </label>
-                            <br />
-                            <input
-                                required
-                                className="border outline-none sm:w-80 w-60 sm:h-10 h-8 rounded px-2"
-                                placeholder=""
-                                type="text"
-                                name="username"
-                                id="username"
-                                onChange={(e) => {
-                                    setUsername(e.target.value);
-                                }}
-                                value={username}
-                            />
-                        </div>
-
-                        {/* password  */}
-                        <div className="my-3">
-                            <label htmlFor="password" className="text-sm text-slate-500">
-                                Password
-                            </label>
-                            <br />
-                            <input
-                                required
-                                className="border outline-none sm:w-80 w-60 sm:h-10 h-8 rounded px-2"
-                                placeholder=""
-                                type="password"
-                                name="password"
-                                id="password"
-                                onChange={(e) => {
-                                    setPassword(e.target.value);
-                                }}
-                                value={password}
-                            />
-                        </div>
-                        <div className="text-sm">
-                            <span>Already have account?</span>
-                            <Link href="/login" className="text-blue-600">
-                                Login
-                            </Link>
-                        </div>
-
-                        {/* error component */}
-                        {error && (
-                            <div>
-                                <p className="text-sm text-red-600">{error}</p>
+                            {/* email address  */}
+                            <div className="my-3">
+                                <label htmlFor="email" className="text-sm text-slate-500">
+                                    Email
+                                </label>
+                                <br />
+                                <input
+                                    required
+                                    className="border outline-none sm:w-80 w-60 sm:h-10 h-8 rounded px-2"
+                                    placeholder=""
+                                    type="email"
+                                    name="email"
+                                    id="email"
+                                    onChange={(e) => {
+                                        setEmail(e.target.value);
+                                    }}
+                                    value={email}
+                                />
                             </div>
-                        )}
 
-                        {/* form submit  */}
-                        <div className="my-5">
-                            <input
-                                className="cursor-pointer sm:w-80 w-60 sm:h-10 h-8 bg-slate-200 hover:bg-slate-300 rounded font-bold"
-                                type="submit"
-                                value="Signup"
-                            />
-                        </div>
-                    </form>
+                            {/* username  */}
+                            <div className="my-3">
+                                <label htmlFor="username" className="text-sm text-slate-500">
+                                    Username
+                                </label>
+                                <br />
+                                <input
+                                    required
+                                    className="border outline-none sm:w-80 w-60 sm:h-10 h-8 rounded px-2"
+                                    placeholder=""
+                                    type="text"
+                                    name="username"
+                                    id="username"
+                                    onChange={(e) => {
+                                        setUsername(e.target.value);
+                                    }}
+                                    value={username}
+                                />
+                            </div>
+
+                            {/* password  */}
+                            <div className="my-3">
+                                <label htmlFor="password" className="text-sm text-slate-500">
+                                    Password
+                                </label>
+                                <br />
+                                <input
+                                    required
+                                    className="border outline-none sm:w-80 w-60 sm:h-10 h-8 rounded px-2"
+                                    placeholder=""
+                                    type="password"
+                                    name="password"
+                                    id="password"
+                                    onChange={(e) => {
+                                        setPassword(e.target.value);
+                                    }}
+                                    value={password}
+                                />
+                            </div>
+                            <div className="text-sm">
+                                <span>Already have account?</span>
+                                <Link href="/login" className="text-blue-600">
+                                    Login
+                                </Link>
+                            </div>
+
+                            {/* error component */}
+                            {error && (
+                                <div>
+                                    <p className="text-sm text-red-600">{error}</p>
+                                </div>
+                            )}
+
+                            {/* form submit  */}
+                            <div className="my-5">
+                                <input
+                                    className="cursor-pointer sm:w-80 w-60 sm:h-10 h-8 bg-slate-200 hover:bg-slate-300 rounded font-bold"
+                                    type="submit"
+                                    value="Signup"
+                                />
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
-    );
+        );
+    } else {
+        return <Loading />;
+    }
 }

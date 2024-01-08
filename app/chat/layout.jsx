@@ -50,44 +50,44 @@ export default function ChatLayout({ children }) {
         }
     }, [auth]);
 
-    if (auth?.loading) {
-        return <Loading />;
-    }
-
-    return (
-        <div className="">
-            <div className="flex justify-center items-center h-screen">
-                {/* friends list */}
-                <div className="border h-full w-[400px]">
-                    <div>
-                        {/* conversation header  */}
-                        <ConversationHeader auth={auth} />
-                        {/* all users  */}
+    if (!auth?.loading && auth?.uid && auth?.isLoggedIn) {
+        return (
+            <div className="">
+                <div className="flex justify-center items-center h-screen">
+                    {/* friends list */}
+                    <div className="border h-full w-[400px]">
                         <div>
-                            <h5 className="text-lg font-medium ms-2 mt-1 text-gray-600">All Users</h5>
-                        </div>
-                        <AllUsers loggedInUserId={auth.uid} />
-                        {/* conversation list */}
-                        <div>
-                            <h5 className="text-lg font-medium ms-2 mt-1 text-gray-600">Chats</h5>
-                        </div>
-                        <ChatLists loggedInUserId={auth.uid} />
-                        {/* conversation list */}
-                        {/* <div>
+                            {/* conversation header  */}
+                            <ConversationHeader auth={auth} />
+                            {/* all users  */}
+                            <div>
+                                <h5 className="text-lg font-medium ms-2 mt-1 text-gray-600">All Users</h5>
+                            </div>
+                            <AllUsers loggedInUserId={auth.uid} />
+                            {/* conversation list */}
+                            <div>
+                                <h5 className="text-lg font-medium ms-2 mt-1 text-gray-600">Chats</h5>
+                            </div>
+                            <ChatLists loggedInUserId={auth.uid} />
+                            {/* conversation list */}
+                            {/* <div>
                             <h5 className="text-lg font-medium ms-2 mt-1 text-gray-600">Chats</h5>
                         </div>
                         <ChatLists loggedInUserId={auth.uid} /> */}
+                        </div>
+                    </div>
+
+                    {/* messages */}
+                    <div className="border border-l-0 w-full h-screen overflow-auto">
+                        {/* message header  */}
+                        <MessageHeader />
+                        {/*  chats */}
+                        <div>{children}</div>
                     </div>
                 </div>
-
-                {/* messages */}
-                <div className="border border-l-0 w-full h-screen overflow-auto">
-                    {/* message header  */}
-                    <MessageHeader />
-                    {/*  chats */}
-                    <div>{children}</div>
-                </div>
             </div>
-        </div>
-    );
+        );
+    } else {
+        return <Loading />;
+    }
 }

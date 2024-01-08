@@ -73,7 +73,7 @@ export default function MessageHeader() {
                                 <div>
                                     {toggleValue === 'media' ? (
                                         <div className="grid grid-cols-12 max-h-[400px] overflow-auto gap-2 mb-5">
-                                            {media.length > 0 &&
+                                            {media.length > 0 ? (
                                                 media.map((m) => (
                                                     <div
                                                         className="col-span-4 hover:border-gray-200 border border-white shadow rounded"
@@ -85,7 +85,12 @@ export default function MessageHeader() {
                                                         />
                                                         {/* <img src={`http://localhost:8000/${m.image}`} alt={m.image} /> */}
                                                     </div>
-                                                ))}
+                                                ))
+                                            ) : (
+                                                <div className="col-span-12">
+                                                    <p>No media found.</p>
+                                                </div>
+                                            )}
                                         </div>
                                     ) : (
                                         <div className="mb-5">
