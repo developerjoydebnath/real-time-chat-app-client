@@ -173,8 +173,8 @@ const Message = ({ msg, auth, setMessages, messages }) => {
                         >
                             {msg?.image && (
                                 <img
-                                    // src={`http://localhost:8000/${msg.image}`}
-                                    src={`https://realtime-chat-app-server-odpz.onrender.com/${msg.image}`}
+                                    src={`http://localhost:8000/${msg.image}`}
+                                    // src={`https://realtime-chat-app-server-odpz.onrender.com/${msg.image}`}
                                     className="mt-2 mb-1 rounded bg-white"
                                     alt="img"
                                 />

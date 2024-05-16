@@ -79,11 +79,11 @@ export default function MessageHeader() {
                                                         className="col-span-4 hover:border-gray-200 border border-white shadow rounded"
                                                         key={m._id}
                                                     >
-                                                        <img
+                                                        {/* <img
                                                             src={`https://realtime-chat-app-server-odpz.onrender.com/${m.image}`}
                                                             alt={m.image}
-                                                        />
-                                                        {/* <img src={`http://localhost:8000/${m.image}`} alt={m.image} /> */}
+                                                        /> */}
+                                                        <img src={`http://localhost:8000/${m.image}`} alt={m.image} />
                                                     </div>
                                                 ))
                                             ) : (

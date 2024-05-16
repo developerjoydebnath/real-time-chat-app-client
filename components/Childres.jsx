@@ -11,12 +11,12 @@ export const Children = ({ children }) => {
 
     // initialize socket connection
     React.useEffect(() => {
-        // const newSocket = io('http://localhost:8000', {
-        //     withCredentials: true,
-        // });
-        const newSocket = io('https://realtime-chat-app-server-odpz.onrender.com', {
+        const newSocket = io('http://localhost:8000', {
             withCredentials: true,
         });
+        // const newSocket = io('https://realtime-chat-app-server-odpz.onrender.com', {
+        //     withCredentials: true,
+        // });
 
         newSocket.on('connect', () => {
             // set the socket to the state
